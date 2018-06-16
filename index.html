@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Star Wars Memory Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link rel="stylesheet" media="screen" href="css/normalize.css">
+  <link rel="stylesheet" media="screen" href="css/modal-styles.css"> 
+  <link rel="stylesheet" media="screen" href="css/styles.css"> 
+</head>
+
+<body>
+  <div class="wrapper">  
+
+    <header class="primary-header">
+      <div id="audio-controls">
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio -->
+        <audio autoplay controls loop muted>
+          <source src="audio/JohnWilliams-StarWarsMainThemeFULL.ogg" type="audio/ogg; codecs=vorbis">
+          <source src="audio/JohnWilliams-StarWarsMainThemeFULL.mp3" type="audio/mpeg">
+        </audio>
+      </div><!-- #audio-controls -->
+      <h1>Star Wars</h1>
+      <h2>Memory Game</h2>
+      <div id="marquee-text">
+        <p>May the force be with you</p>
+      </div><!-- #marquee-text -->
+    </header><!-- .primary-header -->
+  
+    <main>
+      <div id="main-container"> 
+      
+      <section id="game-controls">
+        <div id="game-controls-container">
+
+          <div class="game-button">
+            <button type="button" id="information-button" class="modal-button">
+              <span class="game-button-text">Info</span>
+              <span class="game-control-icon">
+              <img src="icons/information-icon.svg" alt="information">
+              </span><!-- .game-control-icon -->
+            </button><!-- #information-button .modal-button -->
+          </div><!-- .game-button -->
+
+          <div class="game-button">
+            <button type="button" id="start-button" class="modal-button">
+              <span class="game-button-text">Start</span>
+              <span class="game-control-icon">
+              <img src="icons/start-game-icon.svg" alt="start game">
+              </span><!-- .game-control-icon -->
+            </button><!-- #start-button -->
+          </div><!-- .game-button -->
+
+          <div class="game-button is-disabled">
+            <button type="button" id="pause-button" class="modal-button">
+              <span class="game-button-text">Pause</span>
+              <span class="game-control-icon">
+              <img src="icons/pause-game-icon.svg" alt="timer">
+              </span><!-- .game-control-button -->
+            </button><!-- #pause-button .modal-button -->
+          </div><!-- .button -->
+        
+          <div class="game-button is-disabled">
+            <button type="button" id="restart-button" class="modal-button">
+              <span class="game-button-text">Restart</span>
+              <span class="game-control-icon">
+              <img src="icons/restart-game-icon.svg" alt="restart gameboard">
+              </span><!-- .game-control-icon -->
+            </button><!-- #restart-button .modal-button -->
+          </div><!-- .button -->
+
+          <div class="game-button">
+            <button type="button" id="scores-button" class="modal-button">
+            <span class="game-button-text">Scores</span>
+            <span class="game-control-icon">
+            <img src="icons/scoreboard-icon.svg" alt="game scoreboard">
+            </span><!-- .game-control-icon -->
+            </button><!-- #scores-button .modal-button -->
+          </div><!-- .game-button -->
+
+        </div><!-- .game-controls-container -->
+      </section><!-- #game-controls -->
+
+      <section id="game-stats">
+        <div class="game-stats-container">
+          <ul class="game-stats-list">
+            <li class="cards-flipped">Cards Flipped<br>
+            <span id="flipped"></span></li>
+            <li class="time-remaining">Time Remaining<br>
+            <span id="clock"></span><span id="minutes"> minutes</span></li>
+            <li class="star-rating">Star Rating<br>
+            <div class="star-outer">
+              <div class="star-inner"></div>
+            </div><!-- #star-outer -->
+            </li><!-- .star-rating -->
+          </ul><!-- .game-stats-list --> 
+        </div><!-- .game-stats-container -->
+      </section><!-- #game-stats -->
+
+      <section id="game">
+        <div id="gameboard"></div>
+      </section><!-- #game -->
+
+      <div class="modal-container">
+
+        <section id="restart-game" class="modal">
+          <div class="modal-overlay">
+            <div class="modal-content">
+              <header class="modal-header">
+                <h2>Restart Game</h2>
+              </header>
+              <div class="modal-body">
+                <h3 class="neon">You are about to restart the game....</h3>
+
+                <div class="restart-buttons">
+                  <button type="button" id="restart-gameboard" class="modal-body-button">Start New Game</button>
+                  <button type="button" id="resume-current-game" class="modal-body-button">Resume Current Game</button>
+                </div><!-- .restart-buttons -->
+           
+              </div><!-- .modal-body -->
+              <footer class="modal-footer">
+                <p class="footer-quote">"Do. Or do not. There is no try." -Yoda</p>
+              </footer>
+            </div><!-- .modal-content-->
+          </div><!-- .modal-overlay-->
+        </section><!-- #restart-game .modal-->
+
+        <section id="pause-game" class="modal">
+          <div class="modal-overlay">
+            <div class="modal-content">
+              <header class="modal-header">
+                <h2>Pause Game</h2>
+              </header>
+              <div class="modal-body">
+                <h3 class="neon">Game Is Paused</h3>
+                <button type="button" id="return-to-game" class="modal-body-button">Return to Game</button>
+              </div><!-- .modal-body -->
+              <footer class="modal-footer">
+                <p class="footer-quote">"Do. Or do not. There is no try." -Yoda</p>
+              </footer>
+            </div><!-- .modal-content-->
+          </div><!-- .modal-overlay-->
+        </section><!-- #pause-game .modal-->
+
+        <section id="time-over" class="modal">
+          <div class="modal-overlay">
+            <div class="modal-content">
+              <header class="modal-header">
+                <button type="button" id="exit-time-over" class="exit-modal">&times;</button>
+                <h2>Game Over</h2>          
+              </header>
+              <div class="modal-body">
+                <h3 class="neon">Over The Time Limit</h3>
+                <p>You've exceeded the maximum time (4 mins) to complete the game.</p>
+                <button type="button" id="play-again" class="modal-body-button">Play Again</button>
+              </div><!-- .modal-body -->
+              <footer class="modal-footer">
+                <p class="footer-quote">"Do. Or do not. There is no try." -Yoda</p>
+              </footer>
+            </div><!-- .modal-content-->
+          </div><!-- .modal-overlay-->
+        </section><!-- #time-over .modal -->
+
+        <section id="game-over" class="modal">
+          <div class="modal-overlay">
+            <div class="modal-content">
+              <header class="modal-header">
+                <h2>Game Over</h2>
+                <button type="button" id="exit-game-over" class="exit-modal">&times;</button>
+              </header>
+              <div class="modal-body">
+                <h3 class="neon">Congratulations!!!  You're a WINNER</h3>
+                <ul class="game-winner-stats">
+                  <li>Total Time to Match All Cards:  <span id="time-counter"></span> / 4:00</li>
+                  <li>Total Number of Times Cards Flipped:  <span id="flip-counter"></span> / 108</li>
+                  <li class="final-star-rating">Final Star Rating: 
+                  <div class="final-star-outer">
+                    <div class="final-star-inner"></div>
+                  </div><!-- ."final-star-outer -->
+                  <span id="final-number-rating"></span>
+                  </li>
+                  <li class="link-scoreboard"><a id="view-scores" title = "view scoreboard">View Scoreboard</a></li>
+                </ul><!-- .game-stats-list --> 
+                <button type="button" id="new-game" class="modal-body-button">Start New Game</button> 
+              </div><!-- .modal-body -->
+              <footer class="modal-footer">
+                <p class="footer-quote">"Do. Or do not. There is no try." -Yoda</p>
+              </footer>
+            </div><!-- .modal-content-->
+          </div><!-- .modal-overlay-->
+        </section><!-- #game-over .modal -->
+
+        <section id="scores" class="modal">
+          <div class="modal-overlay">
+            <div class="modal-content">
+              <header class="modal-header">
+                <h2>Scoreboard--UNDER CONSTRUCTION</h2>
+                <button type="button" id="exit-scores" class="exit-modal">&times;</button>
+              </header>
+              <div class="modal-table modal-body">
+
+                <div class="modal-table total-time">
+                  <h2 class="neon">Least Time Elapsed</h2>
+                  <table class="scores-table" id="top-time-table">
+                    <caption>Fastest times to match cards</caption>
+                    <thead class="table-header">
+                    <tr>
+                      <td><img src="icons/yoda-icon.png" alt="Yoda image"></td>
+                      <th scope="col">Time (minutes)</th>
+                    </tr>
+                    </thead>
+                    <tfoot class="table-footer">
+                      <tr class="average">
+                        <th>Average</th>
+                        <td id="mean-top-time">&nbsp;</td>
+                      </tr>  
+                      <tr class="current-player">
+                        <th>Current Player</th>
+                        <td id="current-player-top-seconds">&nbsp;</td>
+                      </tr>
+                    </tfoot><!-- .table-footer -->
+                  </table><!-- .scores-table #top-time-table -->
+                </div><!-- .modal-table .total-time -->
+
+                <div class="modal-table total-flips">
+                  <h2 class="neon">Least Cards Revealed</h2>
+                  <table class="scores-table" id="top-flips-table">
+                    <caption>Least number of times cards revealed</caption>
+                    <thead class="table-header">
+                      <tr>
+                        <td><img src="icons/yoda-icon.png" alt="Yoda image"></td>
+                        <th scope="col">Cards<br> Flipped</th>
+                      </tr>
+                    </thead>               
+                    <tfoot class="table-footer">
+                      <tr class="average">
+                          <th>Average</th>
+                          <td id="mean-top-flips">&nbsp;</td>
+                      </tr>
+                      <tr class="current-player">
+                        <th>Current Player</th>
+                        <td id="current-player-top-flips">&nbsp;</td>
+                      </tr> 
+                    </tfoot><!-- .table-footer -->
+                  </table><!-- .scores-table #top-flips-table -->
+                </div><!-- .modal-table .total-flips -->
+            
+              </div><!-- .modal table .modal-body -->
+              <footer class="modal-footer">
+                <p class="footer-quote">"Do. Or do not. There is no try." -Yoda</p>
+              </footer>
+            </div><!-- .modal-content-->
+          </div><!-- .modal-overlay-->
+        </section><!-- #scores .modal -->
+
+        <section id ="information" class="modal">
+          <div class="modal-overlay">
+            <div class="modal-content">
+              <header class="modal-header">
+                <h2>Information</h2>
+                <button type="button" id="exit-information" class="exit-modal">&times;</button>
+              </header>
+              <div class="modal-body">
+                <h3 class="neon">Rules Of Play</h3>
+                <p>Memory, also commonly known as Concentration, is a classic memory-based card game in which all the cards in the deck are laid face down, and then two cards are flipped face up. The object of the game is to turn over matching pairs of cards.</p>
+                <h4 class="information-heading">Deck Of Cards</h4>
+                <p>Total 24-card deck containing 12 unique pairs of cards depicting various Star Wars characters.</p>
+                <h4 class="information-heading">Time Limit</h4>
+                <p>Maximum 4 minutes.</p>
+                <h4 class="information-heading">Card Turn Over Limit</h4>
+                <p>Maximum 108 flips (turn overs).</p>
+                <h4 class="information-heading">Goal</h4>
+                <p>To match all pairs of cards in the least amount of time and with the least amount of flips.</p>
+                <h4 class="information-heading">Setup</h4>
+                <p>Cards are randomnly shuffled and laid out in a grid face down.</p>
+                <h4 class="information-heading">Gameplay</h4>
+                <p>Click 'Start' to begin play.</p>
+                <ul class="information-list">
+                  <li>Click on the first card to turn face up and display the Star Wars character, and then click on a second card.</li>
+                  <li>If the two cards display matching images, both cards remain face-up in position. Click to display another card. </li>
+                  <li>If the two displayed cards <em>do not</em> match, both cards are turned back face down. Click to display another card.</li>
+                  <li>Play continues until all the cards have been matched within the maximum time limit and maximum turn over (flips) limit.</li>
+                </ul>
+                <p id="information-hint"><span>Hint</span>: Pay attention and remember where cards are located when flipped.  When you turn over the first card, you may remember where to find the matching card.</p>
+                <h4 class="information-heading">Winning</h4>
+                <p>All cards are matched in the least amount of time and the least number of cards flipped.</p>
+                <h4 class="information-heading">Game Over</h4>
+                <p>Play will immediately stop if:</p>
+                <ul class="information-list">
+                  <li>All cards are matched.</li>
+                  <li>The maximum time is exceeded.</li>
+                  <li>The maximum number of flips is exceeded.</li>
+                </ul>
+                <h4 class="information-heading">Options</h4>
+                <p>During game play, the following options are available:</p>
+                <ul class="information-list">
+                  <li>Pause: click to temporarily pause the game.</li>
+                  <li>Restart: click to refresh game board and start a new game.</li>
+                </ul>
+              </div><!-- .modal-body -->
+              <footer class="modal-footer">
+                <p class="footer-quote">"Do. Or do not. There is no try." -Yoda</p>
+              </footer>
+            </div><!-- .modal-content-->
+          </div><!-- .modal-overlay-->
+        </section><!-- #information .modal -->
+
+        <section id ="flips-exceeded" class="modal">
+          <div class="modal-overlay">
+            <div class="modal-content">
+              <header class="modal-header">
+                <h2>Game Over</h2>
+                <button type="button" id="exit-flips-exceeded" class="exit-modal">&times;</button>
+              </header>
+              <div class="modal-body">
+                <h3 class="neon">Over The Cards Flipped Limit</h3>
+                <p>You've exceeded the maximum number of times (96) that cards can be flipped and displayed in a game.</p> 
+                <button type="button" id="play-again2" class="modal-body-button">Play Again</button>  
+              </div><!-- .modal-body -->
+              <footer class="modal-footer">
+                <p class="footer-quote">"Do. Or do not. There is no try." -Yoda</p>
+              </footer>
+            </div><!-- .modal-content-->
+          </div><!-- .modal-overlay-->
+        </section><!-- #information .modal -->
+
+        </div><!-- .modal-container -->
+      </div><!-- .main-container -->
+    </main>
+
+    <footer class="primary-footer">
+      <div class="social-links-container">
+        <ul class="social-links fa-ul">
+          <li class="codepen">
+            <a href="https://codepen.io/dashboard/" title="View my Codepen page" target="_blank">
+            <span class="fa-li"><i class="fab fa-codepen"></i></span>
+            Codepen
+            </a>
+          </li>
+          <li class="twitter">
+            <a href="https://twitter.com/Priyaka_XO" title="View my Twitter page" target="_blank"> 
+            <span class="fa-li"><i class="fab fa-twitter-square"></i></span>
+            Twitter
+            </a>
+          </li>
+          <li class="github">
+            <a href="https://github.com/priyaka-xo" title="View my Git page" target="_blank">
+            <span class="fa-li"><i class="fab fa-git-square"></i></span>
+            Git
+            </a>
+          </li>
+        </ul><!-- .social-links  .fa-ul -->
+      </div><!-- .social-links-container -->
+
+      <p class="disclaimer">All logos are property of their respective owners. No Copyright infringement intended.</p>
+
+    </footer><!-- .primary-footer -->
+
+  </div><!-- .wrapper -->
+
+  <script src="js/script.js"></script> 
+  
+</body>
+</html>

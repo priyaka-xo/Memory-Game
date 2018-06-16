@@ -1,0 +1,318 @@
+/*************************************************
+**************************************************
+    MODAL STYLES
+*************************************************/
+
+div.modal-container { order: 4; }
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  overflow: auto;
+} 
+
+/* #restart-game {
+  display: block;
+} */
+
+div.modal-overlay {
+  background: url("../images/night-sky-alt-1600.jpg") repeat; 
+  animation: animate-background linear 60s infinite;
+  height: 100vh;
+  width:  100vw;
+  z-index: 15;
+}
+
+div.modal-content {
+  background-color: rgb(0, 0, 0);
+  border: rgb(28, 73, 140) 10px double;
+  font-family: "starwars", sans-serif;
+  max-height: 100%;
+  width: 75vw;
+  max-width: 100%;
+  overflow: auto;
+  margin: 0 auto;
+}
+
+/*************************************************
+**************************************************
+    MODAL HEADER STYLES
+*************************************************/
+
+.modal-header {
+  background-color: rgb(51, 133, 255);
+  color: rgb(249, 179, 11);
+  font-size: 1.25rem;
+  height: 100%;
+  max-height: 50px;
+  padding: 10px 20px 15px;
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h2 { 
+  font-size: inherit; 
+  text-shadow: 2px 2px 1px rgb(125, 14, 17);
+  text-transform: uppercase;
+   }
+
+.exit-modal {
+  background-color: rgb(125, 14, 17);
+  border: rgb(196, 202, 200) 1px solid;
+  color: rgb(249, 179, 11);
+  cursor: pointer;
+  padding: 7.5px 10px 3px;
+}
+
+.exit-modal:hover, .exit-modal:focus {
+  border: rgb(249, 179, 11) 1px solid;
+  transform: scale(1.15, 1.15);
+}
+
+.exit-modal:active {
+  top: 2px;
+  box-shadow: 4px 4px 2px rgb(28, 73, 140);
+}
+
+/*************************************************
+**************************************************
+    MODAL BODY STYLES
+*************************************************/
+
+div.modal-body {  
+  color: rgb(196, 202, 200);
+  font-size: 1rem;
+  width: 450px;
+  max-width: 100%;
+  margin: 0 auto; 
+  padding: 20px 50px;
+  text-align: justify;
+ }
+
+/* Neon Effect courtesy of Matt Smith */
+/* https://codemyui.com/css-neon-text-glow-effect/ */
+.neon {
+  color: rgb(159, 114, 8);
+  font-size: 1.50rem;
+  margin: 30px;
+  text-align: center;
+  text-shadow:
+    0 0 5px rgb(249, 179, 11),
+    0 0 10px rgb(249, 179, 11),
+    0 0 20px rgb(249, 179, 11),
+    0 0 40px rgb(125, 14, 17),
+    0 0 80px rgb(125, 14, 17),
+    0 0 90px rgb(249, 179, 11),
+    0 0 100px rgb(204, 147, 10),
+    0 0 150px rgb(204, 147, 10);
+}
+
+.modal-body-button {
+  background-color: rgb(125, 14, 17);
+  border: rgb(196, 202, 200) 1px solid;
+  color: rgb(249, 179, 11);
+  display: block;
+  padding: 10px;
+  width: 250px;
+  margin: 20px auto 30px auto;
+  position: relative;
+}
+
+.modal-body-button:hover, .modal-body-button:focus {
+  border: rgb(249, 179, 11) 1px solid;
+  transform: scale(1.15, 1.15);
+}
+
+.modal-body-button:active {
+  top: 1px;
+  box-shadow: 4px 4px 2px rgb(28, 73, 140);
+}
+
+/*************************************************
+**************************************************
+    INFORMATION MODAL STYLES
+*************************************************/
+
+.information-heading {
+  color: rgb(249, 179, 11);
+  margin: 2.0rem 0 1rem 0;
+}
+
+.information-list {
+  list-style: square outside;
+  padding-left: 20px;
+}
+
+/* for VoiceOver screen reader */
+.information-list::before { content: "\200B"; }
+
+.information-list > li { padding-bottom: 0.5rem; }
+
+#information-hint { padding-top: 0.75rem; }
+
+#information-hint span { text-decoration-line: underline }
+
+/*************************************************
+**************************************************
+    GAME-OVER MODAL STYLES
+*************************************************/
+
+.game-winner-stats > li { margin: 1em; }
+
+#time-counter { color: rgb(249, 179, 11); }
+
+#flip-counter { color: rgb(249, 179, 11); }
+
+.final-star-outer {
+  position: relative;
+  display: inline-block;
+
+}
+
+.final-star-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+
+.final-star-outer::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 200;
+  color: rgb(249, 179, 11);
+  border: rgb(249, 179, 11);
+}
+
+.final-star-inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: rgb(249, 179, 11);
+}
+  
+
+.link-scoreboard {
+  font-size: 1.15rem;
+  color: rgb(249, 179, 11);
+  position: relative;
+}
+
+.link-scoreboard a:link { color: rgb(249, 179, 11); }
+
+.link-scoreboard a:hover, .link-scoreboard a:focus {
+    text-decoration-color: rgb(51, 133, 255);
+    text-decoration-line: underline;
+    text-decoration-style: double;
+    text-transform: uppercase;
+}
+
+.link-scoreboard a:active {
+    color: rgb(51, 133, 255);
+    top: 1px;
+}
+
+.link-scoreboard:active { transform: scale(1.05); }
+
+.link-scoreboard a:visited { color: rgb(249, 179, 11); }
+
+
+/*************************************************
+**************************************************
+    SCOREBOARD MODAL STYLES
+*************************************************/
+
+.modal-table h2 { margin-bottom: 10px; }
+
+.scores-table {
+  font-size: 0.8rem;
+  table-layout: fixed;
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  border: 2px solid rgb(196, 202, 200);
+}
+
+.scores-table > caption {
+  color: rgb(204, 147, 10);
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+  font-variant: small-caps;
+  font-kerning: auto;
+} 
+
+.table-header {
+  background-color: rgb(125, 14, 17);
+  border-bottom: rgb(196, 202, 200) 1px solid;
+  color: rgb(249, 179, 11);
+  max-height: 50px;
+  height: 100%; 
+}
+
+.table-header td { 
+  width: 60%;
+  border-right: rgb(196, 202, 200) 1px solid;
+ }
+
+.table-header th { 
+  width: 40%; 
+  padding: 10px; }
+
+.table-body th {
+  padding: 7.5px 0;
+  border-right: rgb(196, 202, 200) 1px solid; }
+
+.table-body td { padding: 7.5px 0; }
+
+.table-footer { width: 60%; }
+
+.table-footer td { width: 40%; }
+
+.table-footer th {
+  width: 40%;
+  padding: 10px;
+  border-right: rgb(196, 202, 200) 1px solid;
+}
+
+.table-footer .average {
+  color: rgb(249, 179, 11);
+  border-top: rgb(196, 202, 200) 1px dotted;
+}
+
+.table-footer .current-player {
+  background-color: rgb(125, 14, 17);
+  border-top: rgb(196, 202, 200) 1px solid;
+  color: rgb(249, 179, 11);
+  height: 100%;
+  max-height: 50px;
+}
+
+/*************************************************
+**************************************************
+    MODAL FOOTER STYLES
+*************************************************/
+
+.modal-footer {
+  background-color: rgb(51, 133, 255);
+  color: rgb(249, 179, 11);
+  font-size: 0.9rem;
+  height: 100%;
+  max-height: 50px;
+  padding: 0 20px;
+  margin: 10px; 
+}
+
+.footer-quote {
+  padding: 10px 0;
+  text-shadow: 2px 2px 1px rgb(125, 14, 17);
+}

@@ -1,0 +1,480 @@
+/*************************************************
+**************************************************  
+    COLOR PALETTE 
+**************************************************
+
+GOLDS:
+UCLA GOLD: rgb(249, 179, 11)
+VIVID AMBER: rgb(204, 147, 10)
+SANDY TAUPE: rgb(159, 114, 8)
+
+BLUES:
+BRILLIANT AZURE: rgb(51, 133, 255)
+YALE BLUE: rgb(28, 73, 140)
+
+RED:
+UP MAROON: rgb(125, 14, 17)
+
+WHITE:
+LAVENDER GREY: rgb(196, 202, 200);
+
+BLACK:
+REGISTRATION BLACK: rgb(0, 0, 0)
+
+*************************************************/
+
+/*************************************************
+**************************************************
+    TYPOGRAPHY
+*************************************************/
+
+@font-face {
+    font-family: "starwars";
+    src: url("../fonts/starwars.eot?") format("eot"),
+         url("../fonts/starwars.woff") format("woff"),
+         url("../fonts/starwars.ttf") format("truetype"),
+         url("../fonts/starwars.svg#starwars") format("svg");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "starjedi";
+    src: url("../fonts/starjedi.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "starjedioutline";
+    src: url("../fonts/starjedioutline.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+ 
+
+/*************************************************
+**************************************************
+    GLOBAL STYLES
+*************************************************/
+
+  * {
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-padding-start: 0;
+  }
+  
+  *:focus {
+    outline: none;
+    outline-color: rgb(0, 0, 0);
+    -webkit-focus-ring-color: rgb(0, 0, 0);
+  
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  a:-webkit-any-link {
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  button { padding: 0; }
+
+
+/*************************************************
+**************************************************
+BODY STYLES
+*************************************************/
+
+body {
+    background: url("../images/night-sky-alt-1600.jpg") repeat; 
+    animation: animate-background linear 60s infinite;
+}
+ 
+@keyframes animate-background {
+    from { background-position: 0px 0px; }
+    to { background-position: 0px -1600px; }
+}
+
+
+/*************************************************
+**************************************************
+PRIMARY HEADER STYLES
+*************************************************/
+
+.primary-header {
+    color: rgb(249, 179, 11);
+    position: relative;
+}
+
+#audio-controls { 
+    text-align: center;
+    transform: scale(0.8);
+
+
+}
+.primary-header h1 {
+    font-family: "starjedioutline", "starwars", sans-serif;
+    font-size: 2.5rem;
+    margin: 0;
+    text-align: center;
+}
+
+.primary-header h2 {
+    font-family: "starjedi", "starwars", sans-serif;
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#marquee-text {
+    border-top: rgb(51, 133, 255) 2px solid;
+    border-bottom: rgb(51, 133, 255) 2px solid;
+    height: 1.5rem;	
+    overflow: hidden;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    position: relative;
+   }
+
+#marquee-text p {
+    font-family: "starwars", sans-serif;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    position: absolute;
+    width: 100%;
+    max-width: 1024px;
+    height: 100%;
+    line-height: 1.25rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    transform: translateX(100%);
+    animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+    from { transform: translateX(90%); }
+    to { transform: translateX(-90%); }
+}
+
+
+/*************************************************
+**************************************************
+MAIN CONTENT STYLES
+**************************************************/
+
+div#main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+
+/*************************************************
+**************************************************
+    GAME BUTTON STYLES
+*************************************************/
+
+section#game-controls {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1024px;
+    height: 125%;
+    max-height: 100%; 
+    order: 1; 
+}
+
+div#game-controls-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+.is-disabled {
+    cursor: not-allowed;
+    opacity: 0.5; 
+}
+
+.is-disabled .modal-button {
+    cursor: inherit;
+    display: block;
+    pointer-events: none;
+}
+
+.modal-button {
+    background-color: rgb(0, 0, 0);
+    border: rgb(196, 202, 200) 1px solid;
+    color: rgb(249, 179, 11);
+    cursor: pointer;
+    font-family: "starwars", sans-serif;
+    font-size: 1rem;
+    height: 45px;
+    letter-spacing: 1px;
+    padding-top: 7.5px;
+    width: 90px;
+    margin: 25px 10px; 
+    position: relative;
+}
+
+#information-button { cursor: help; }
+
+.modal-button:hover, .modal-button:focus {
+    border: rgb(51, 133, 255) 2px solid;
+    transform: scale(1.15, 1.15); 
+}
+
+.modal-button:active {
+    top: 1px;
+    box-shadow: 4px 4px 2px rgb(28, 73, 140);
+}
+
+.game-button-text { 
+    width: 90px;
+    margin: 0 auto;
+    text-align: center;
+ }
+
+.game-control-icon img {  padding-top: 5px; }
+
+span.game-control-icon { display: block }
+
+
+/*************************************************
+**************************************************
+    GAME STATISTICS STYLES
+*************************************************/
+
+section#game-stats { 
+    border-bottom-color: rgb(51, 133, 255);
+    border-bottom-width: 5px;
+    border-bottom-style: double;
+    color:  rgb(249, 179, 11);
+    font-family: "starwars", sans-serif;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    order: 2; 
+}
+
+#flipped, #clock, #minutes  {
+    color:rgb(125, 14, 17);
+    font-size: 1.25rem;
+}
+
+.game-stats-container {
+    width: 100%;
+    max-width: 1046px;
+    margin: 15px auto 15px auto;
+}
+
+.game-stats-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    max-width: 1046px;
+    text-align: center
+}
+
+.cards-flipped {
+    width: 100%;
+    max-width: 33.33334%
+}
+
+.time-remaining {
+    width: 100%;
+    max-width: 33.33333%
+}
+
+.star-rating {
+    width: 100%;
+    max-width: 33.33333%; 
+}
+
+.star-outer {
+    position: relative;
+    display: inline-block;
+
+}
+
+.star-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+}
+
+.star-outer::before {
+    content: "\f005 \f005 \f005 \f005 \f005";
+    font-family: "Font Awesome 5 Free";
+    font-size: 1.25rem;
+    font-weight: 200;
+    color: rgb(125, 14, 17);
+    border: rgb(125, 14, 17);
+}
+
+.star-inner::before {
+    content: "\f005 \f005 \f005 \f005 \f005";
+    font-family: "Font Awesome 5 Free";
+    font-size: 1.25rem;;
+    font-weight: 900;
+    color: rgb(125, 14, 17);
+}
+
+
+/*************************************************
+**************************************************
+    GAMEBOARD STYLES
+*************************************************/
+
+section#game {
+    margin: 0 auto;
+    width: 1024px;
+    max-width: 100%;
+    order: 3;
+}
+
+div#gameboard {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+.card, .card-container, .card-face-down, .card-face-up {
+    height: 150px;
+    width: 150px;
+}
+
+.card-container {
+    margin: 5px;
+    perspective: 700px;
+}
+
+.card {
+    border: rgb(0, 0, 0) 1px solid;
+    cursor: pointer; 
+    position: relative;
+    -o-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+    transform-style: preserve-3d;
+}
+
+.card-face-down, .card-face-up {
+    backface-visibility: hidden;
+    background: rgb(0, 0, 0) center no-repeat;
+    position: absolute;
+}
+
+.card-face-up { transform: rotateY(180deg); }
+
+.selected { transform: rotateY(180deg); }
+
+.selected > .card-face-up { border: rgb(125, 14, 17) 1px dotted; }
+
+.matched { transform: rotateY(180deg); }
+
+.matched > .card-face-up { border: rgb(249, 179, 11) 3px outset; }
+
+.nomatch { transform: rotateY(180deg); }
+
+
+/*************************************************
+**************************************************
+    PRIMARY FOOTER STYLES
+*************************************************/
+
+.primary-footer {
+    background-color: rgb(0, 0, 0);
+    border-top-color: rgb(51, 133, 255);
+    border-top-width: 5px;
+    border-top-style: double;
+    color: rgb(125, 14, 17);
+    font-family: "starwars", sans-serif;
+    font-size: 0.75rem;
+    margin-top: 20px;
+}
+
+.social-links-container {
+    width: 100%;
+    max-width: 1046px;
+    padding: 15px 0;
+    margin: 0 auto;
+    
+    /* flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center; */
+}
+
+.social-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    max-width: 960px;  
+}
+
+.social-links {
+    margin: 0 auto;
+
+}
+
+.social-links li {
+    font-size: 1rem;
+    padding: 5px 0; 
+}
+
+.twitter {
+    width: 100%;
+    max-width: 33.33334%
+}
+
+.git {
+    width: 100%;
+    max-width: 33.33333%
+}
+
+.codepen {
+    width: 100%;
+    max-width: 33.33333%;
+}
+
+/* .social-links a { position: relative; } */
+
+.social-links a:link { color: rgb(249, 179, 11); }
+
+.social-links a:hover, .social-links a:focus {
+    text-decoration-color: rgb(51, 133, 255);
+    text-decoration-line: underline;
+    text-decoration-style: double;
+    text-transform: uppercase;
+}
+
+.social-links a:active {
+    color: rgb(51, 133, 255);
+    top: 1px;
+}
+
+.social-links li:active { transform: scale(1.15); }
+
+.social-links a:visited { color: rgb(249, 179, 11); }
+
+.disclaimer {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom-color: rgb(51, 133, 255);
+    border-bottom-width: 5px;
+    border-bottom-style: double;
+}
