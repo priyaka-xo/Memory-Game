@@ -66,8 +66,9 @@ This project is licensed under Apache License 2.0 - see the LICENSE.md file for 
 
 ## Acknowledgements
 * Wes Bos
-<br>
+
 "Vanilla JS Countdown Timer"
+<br>
 https://www.youtube.com/watch?v=LAaf7-WuJJQ
 <br><br>
 * Mike Bostock
@@ -136,11 +137,8 @@ https://youtu.be/u3rylF3y3og
 * Font Awesome
 * Icon Ninja
   + http://www.iconninja.com/basic-icon-sets-697
-<br>
   + http://www.iconninja.com/pictograms-in-circle-vol-1-icon-sets-135
-<br>
   + http://www.iconninja.com/star-wars-color-icon-sets-19874
-<br>
 * seeklogo
 <br>
 https://seeklogo.com/vector-logo/311801/star-wars
