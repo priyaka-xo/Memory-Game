@@ -48,7 +48,8 @@ The scoreboard modal is under construction. I need to learn how to use Firebase 
 <hr>
 
 ## How to Play
-Download the repository, and open index.html in the brower of your choice.
+* Go to https://priyaka-xo.github.io/Memory-Game/
+* Download the repository, and open index.html in the brower of your choice.
 <br>
 <hr>
 
